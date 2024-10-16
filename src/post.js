@@ -1,12 +1,10 @@
 const User = require('./user')
 
 class Post {
-  #number
-  #subscribers
-  constructor (name, number = 0) {
+  #number = 0
+  #subscribers = []
+  constructor (name) {
     this.name = name
-    this.#number = number
-    this.#subscribers = []
   }
 
   get summary () {
@@ -23,16 +21,19 @@ class Post {
   }
 
   attach (user) {
-    if (user instanceof User && this.#subscribers.indexOf(user) === -1) {
-      this.#subscribers.push(user)
+    if (user instanceof User) {
+      if (!this.#subscribers.includes(user)) {
+        this.#subscribers.push(user)
+      }
     }
   }
 
   detach (user) {
-    const index = this.#subscribers.indexOf(user)
-    if (index !== -1) {
-      this.#subscribers.splice(index, 1)
-    }
+    // const index = this.#subscribers.indexOf(user)
+    // if (index >= 0) {
+    //   this.#subscribers.splice(index, 1)
+    // }
+    this.#subscribers = this.#subscribers.filter(u => u !== user)
   }
 
   publish () {
@@ -40,5 +41,4 @@ class Post {
     return this.#subscribers.map(element => element.notify(this))
   }
 }
-
 module.exports = Post
