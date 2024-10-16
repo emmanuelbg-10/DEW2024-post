@@ -7,7 +7,7 @@ class Magazine extends PaidPost {
   }
 
   get summary () {
-    return super.summary + ` of ${this.topic}`
+    return super.summary + ' of ' + this.topic
   }
 }
 

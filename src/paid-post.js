@@ -7,9 +7,9 @@ class PaidPost extends Post {
     this.price = price
   }
 
-  attach (client) {
-    if (client instanceof Client) {
-      super.attach(client)
+  attach (user) {
+    if (user instanceof Client) {
+      super.attach(user)
     }
   }
 }

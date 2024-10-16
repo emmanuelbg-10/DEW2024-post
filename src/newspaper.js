@@ -7,7 +7,7 @@ class Newspaper extends PaidPost {
   }
 
   get summary () {
-    return super.summary + ` of ${this.district}`
+    return super.summary + ' of ' + this.district
   }
 }
 
